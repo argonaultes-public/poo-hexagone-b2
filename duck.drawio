@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2024-06-12T10:14:55.829Z" agent="Mozilla/5.0 (X11; Linux x86_64; rv:126.0) Gecko/20100101 Firefox/126.0" etag="1Je8665bUSp7gBsynHO4" version="24.4.13" type="github">
-  <diagram name="Page-1" id="s25yOQw_jkyahJ5u8ydv">
-    <mxGraphModel dx="1267" dy="751" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+<mxfile host="app.diagrams.net" modified="2024-06-12T10:38:32.484Z" agent="Mozilla/5.0 (X11; Linux x86_64; rv:126.0) Gecko/20100101 Firefox/126.0" etag="Y3iGPwiJeW7hO_IrVx9e" version="24.4.13" type="github" pages="2">
+  <diagram name="class" id="s25yOQw_jkyahJ5u8ydv">
+    <mxGraphModel dx="591" dy="751" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -89,6 +89,67 @@
         </mxCell>
         <mxCell id="zTWkduy2ARW4aEmU2-Jo-28" value="&lt;div&gt;+ voler()&lt;/div&gt;&lt;div&gt;+ cancaner()&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="zTWkduy2ARW4aEmU2-Jo-26">
           <mxGeometry y="34" width="160" height="46" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="hmoPU68qrS22_MqYNUuN" name="sequence">
+    <mxGraphModel dx="454" dy="751" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="64KflBc4vhcss6ep0UFS-1" value="frame" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;" vertex="1" parent="1">
+          <mxGeometry x="130" y="350" width="660" height="600" as="geometry" />
+        </mxCell>
+        <mxCell id="64KflBc4vhcss6ep0UFS-2" value="Canard Col Bleu" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" vertex="1" parent="1">
+          <mxGeometry x="510" y="430" width="100" height="410" as="geometry" />
+        </mxCell>
+        <mxCell id="64KflBc4vhcss6ep0UFS-4" value="" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" vertex="1" parent="64KflBc4vhcss6ep0UFS-2">
+          <mxGeometry x="45" y="90" width="10" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="64KflBc4vhcss6ep0UFS-3" value="Joueur" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" vertex="1" parent="1">
+          <mxGeometry x="260" y="430" width="100" height="400" as="geometry" />
+        </mxCell>
+        <mxCell id="64KflBc4vhcss6ep0UFS-5" value="créer canard" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;entryX=0;entryY=0;entryDx=0;entryDy=5;" edge="1" target="64KflBc4vhcss6ep0UFS-4" parent="1" source="64KflBc4vhcss6ep0UFS-3">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="485" y="525" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="64KflBc4vhcss6ep0UFS-6" value="confirmation création de canard" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;exitX=0;exitY=1;exitDx=0;exitDy=-5;" edge="1" source="64KflBc4vhcss6ep0UFS-4" parent="1" target="64KflBc4vhcss6ep0UFS-3">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="485" y="595" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="64KflBc4vhcss6ep0UFS-7" value="" style="html=1;whiteSpace=wrap;fillColor=none;strokeColor=default;" vertex="1" parent="1">
+          <mxGeometry x="280" y="620" width="350" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="64KflBc4vhcss6ep0UFS-8" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="1">
+          <mxGeometry x="280" y="640" width="350" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="64KflBc4vhcss6ep0UFS-12" value="loop [true]" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="280" y="618" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="64KflBc4vhcss6ep0UFS-14" value="" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" vertex="1" parent="1">
+          <mxGeometry x="556" y="680" width="10" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="64KflBc4vhcss6ep0UFS-15" value="voler" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;" edge="1" target="64KflBc4vhcss6ep0UFS-14" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="561" y="660" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="591" y="690" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="64KflBc4vhcss6ep0UFS-16" value="" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" vertex="1" parent="1">
+          <mxGeometry x="556" y="760" width="10" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="64KflBc4vhcss6ep0UFS-17" value="cancaner" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;" edge="1" target="64KflBc4vhcss6ep0UFS-16" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="561" y="740" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="591" y="770" />
+            </Array>
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>
