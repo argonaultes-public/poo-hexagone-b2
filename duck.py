@@ -1,11 +1,13 @@
 from abc import ABC, abstractmethod
 from fly import FlyBehavior, FlyNone, FlyInSpace
+from quack import QuackBehavior, QuackMuet, QuackTresFort
 
 class Duck(ABC):
 
-    def __init__(self, color, flybehavior : FlyBehavior = FlyNone()):
+    def __init__(self, color, flybehavior : FlyBehavior = FlyNone(), quackbehavior : QuackBehavior = QuackMuet()):
         self.__color = color
         self.__flybehavior = flybehavior
+        self.__quackbehavior = quackbehavior
 
     @property
     def color(self):
@@ -15,7 +17,15 @@ class Duck(ABC):
         self.__flybehavior.fly()
 
     def quack(self):
-        pass
+        self.__quackbehavior.quack()
+
+    @property
+    def flybehavior(self):
+        return self.__flybehavior
+
+    @flybehavior.setter
+    def flybehavior(self, value : FlyBehavior):
+        self.__flybehavior = value
 
     @abstractmethod
     def display(self):
@@ -44,9 +54,13 @@ if __name__ == '__main__':
     donald = MallardDuck()
     print(donald.display())
     donald.fly()
+    donald.quack()
     picsou = CanardBleu()
     print(picsou.display())
     picsou.fly()
     # set FlyInSpace to picsou
+    picsou.flybehavior = FlyInSpace()
+    picsou.quack()
     # try to fly again and check picsou is flying in space
+    picsou.fly()
 
