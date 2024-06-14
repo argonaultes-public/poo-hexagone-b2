@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
-from fly import FlyBehavior, FlyNone, FlyInSpace
-from quack import QuackBehavior, QuackMuet, QuackTresFort
+from .fly import FlyBehavior, FlyNone, FlyInSpace
+from .quack import QuackBehavior, QuackMuet, QuackTresFort
 
 class Duck(ABC):
 
