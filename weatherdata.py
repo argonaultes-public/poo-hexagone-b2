@@ -10,38 +10,8 @@ class Display:
 class Observer(ABC):
     
     @abstractmethod
-    def notify(self):
+    def notify(self, subject):
         pass
-
-class DisplayTemp(Display, Observer):
-    def update_display(self, temperature, pressure, humidity):
-        print(f'temperature: {temperature}')
-
-    def notify(self):
-        print('temperature:')
-
-class DisplayPressure(Display, Observer):
-    def update_display(self, temperature, pressure, humidity):
-        print(f'pressure: {pressure}')
-
-    def notify(self):
-        print('pressure')
-
-class DisplayHumidity(Display, Observer):
-    def update_display(self, temperature, pressure, humidity):
-        print(f'humidity: {humidity}')
-
-    def notify(self):
-        print('humidity')
-
-class DisplayLolCat(Display, Observer):
-    def update_display(self, temperature, pressure, humidity):
-        print(f'Lol Cat: {temperature} vs {pressure}')
-
-    def notify(self):
-        print('lol cat')
-
-
 
 class Subject:
     def __init__(self):
@@ -55,7 +25,36 @@ class Subject:
 
     def notifiy_observers(self):
         for observer in self.__observers:
-            observer.notify()
+            observer.notify(self)
+
+class DisplayTemp(Display, Observer):
+    def update_display(self, temperature, pressure, humidity):
+        print(f'temperature: {temperature}')
+
+    def notify(self, subject):
+        print(f'temperature: {subject.temperature}')
+
+class DisplayPressure(Display, Observer):
+    def update_display(self, temperature, pressure, humidity):
+        print(f'pressure: {pressure}')
+
+    def notify(self, subject):
+        print(f'pressure: {subject.pressure}')
+
+class DisplayHumidity(Display, Observer):
+    def update_display(self, temperature, pressure, humidity):
+        print(f'humidity: {humidity}')
+
+    def notify(self, subject):
+        print(f'humidity: {subject.humidity}')
+
+class DisplayLolCat(Display, Observer):
+    def update_display(self, temperature, pressure, humidity):
+        print(f'Lol Cat: {temperature} vs {pressure}')
+
+    def notify(self, subject):
+        print(f'lol cat: {subject.pressure} vs {subject.temperature}')
+
 
 class WeatherData(Subject):
 
@@ -64,22 +63,36 @@ class WeatherData(Subject):
         self.register_observer(DisplayHumidity())
         self.register_observer(DisplayPressure())
         self.register_observer(DisplayTemp())
+        self.__temperature, self.__pressure, self.__humidity = 0, 0, 0
 
-    def get_temperature(self):
+
+    @property
+    def temperature(self):
+        return self.__temperature
+
+    @property
+    def pressure(self):
+        return self.__pressure
+
+    @property
+    def humidity(self):
+        return self.__humidity
+
+    def __get_temperature(self):
         return randrange(-20, 50)
 
-    def get_pressure(self):
+    def __get_pressure(self):
         return randint(800, 1100)
 
-    def get_humidity(self):
+    def __get_humidity(self):
         return randrange(0, 100)
 
     def measurements_changed(self):
 
         # collect measures
-        temperature = self.get_temperature()
-        pressure = self.get_pressure()
-        humidity = self.get_humidity()
+        self.__temperature = self.__get_temperature()
+        self.__pressure = self.__get_pressure()
+        self.__humidity = self.__get_humidity()
 
         self.notifiy_observers()
 
