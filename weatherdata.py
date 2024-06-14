@@ -1,27 +1,69 @@
 from random import randrange, randint
+from abc import abstractmethod, ABC
 
-class DisplayTemp:
+class Display:
+    
+    @abstractmethod
+    def update_display(self, temperature, pressure, humidity):
+        pass
 
-    def display_temp(self, temperature):
+class Observer(ABC):
+    
+    @abstractmethod
+    def notify(self):
+        pass
+
+class DisplayTemp(Display, Observer):
+    def update_display(self, temperature, pressure, humidity):
         print(f'temperature: {temperature}')
 
-class DisplayPressure:
+    def notify(self):
+        print('temperature:')
 
-    def display_pressure(self, pressure):
+class DisplayPressure(Display, Observer):
+    def update_display(self, temperature, pressure, humidity):
         print(f'pressure: {pressure}')
 
-class DisplayHumidity:
+    def notify(self):
+        print('pressure')
 
-    def display_humidity(self, humidity):
+class DisplayHumidity(Display, Observer):
+    def update_display(self, temperature, pressure, humidity):
         print(f'humidity: {humidity}')
 
+    def notify(self):
+        print('humidity')
 
-class WeatherData:
+class DisplayLolCat(Display, Observer):
+    def update_display(self, temperature, pressure, humidity):
+        print(f'Lol Cat: {temperature} vs {pressure}')
+
+    def notify(self):
+        print('lol cat')
+
+
+
+class Subject:
+    def __init__(self):
+        self.__observers = []
+
+    def register_observer(self, observer : Observer):
+        self.__observers.append(observer)
+
+    def unregister_observer(self, observercls):
+        self.__observers = [observer for observer in self.__observers if not isinstance(observer, observercls)]
+
+    def notifiy_observers(self):
+        for observer in self.__observers:
+            observer.notify()
+
+class WeatherData(Subject):
 
     def __init__(self):
-        self.__display_temp = DisplayTemp()
-        self.__display_pressure = DisplayPressure()
-        self.__display_humidity = DisplayHumidity()
+        super().__init__()
+        self.register_observer(DisplayHumidity())
+        self.register_observer(DisplayPressure())
+        self.register_observer(DisplayTemp())
 
     def get_temperature(self):
         return randrange(-20, 50)
@@ -39,13 +81,13 @@ class WeatherData:
         pressure = self.get_pressure()
         humidity = self.get_humidity()
 
-        # trigger display
-        self.__display_humidity.display_humidity(humidity)
-        self.__display_temp.display_temp(temperature)
-        self.__display_pressure.display_pressure(pressure)
-
+        self.notifiy_observers()
 
 if __name__ == '__main__':
     w = WeatherData()
+    print('==================')
     w.measurements_changed()
+    print('==================')
+    w.register_observer(DisplayLolCat())
+    w.unregister_observer(DisplayHumidity)
     w.measurements_changed()
