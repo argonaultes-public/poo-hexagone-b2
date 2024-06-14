@@ -31,6 +31,47 @@ class Duck(ABC):
     def display(self):
         pass
 
+class CountFlyDuck(Duck):
+
+    def __init__(self, duck : Duck):
+        self.__duck = duck
+        self.__fly_counter = 0
+
+    def fly(self):
+        self.__fly_counter += 1
+        self.__duck.fly()
+
+    def quack(self):
+        self.__duck.quack()
+    
+    @property
+    def counter(self):
+        return f'{self.__fly_counter} {self.__duck.counter}'
+
+
+    def display(self):
+        return self.__duck.display()
+
+class CountQuackDuck(Duck):
+
+    def __init__(self, duck : Duck):
+        self.__duck = duck
+        self.__quack_counter = 0
+
+    def quack(self):
+        self.__quack_counter += 1
+        self.__duck.quack()
+
+    def fly(self):
+        self.__duck.fly()
+    
+    @property
+    def counter(self):
+        return f'{self.__quack_counter}'
+
+    def display(self):
+        return self.__duck.display()
+
 class MallardDuck(Duck):
 
     def __init__(self):
