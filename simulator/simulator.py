@@ -1,5 +1,6 @@
 from ..duck.duck import MallardDuck, Duck, CountQuackDuck, CountFlyDuck
 from ..goose.goose import Goose, GooseAsDuck
+from ..quackologist.quackologist import Quackologist
 
 class DuckSimulator:
 
@@ -24,8 +25,13 @@ class DuckSimulator:
 
 if __name__ == '__main__':
     sim = DuckSimulator()
+    alan = Quackologist('alan')
     picsou = CountFlyDuck(CountQuackDuck(MallardDuck()))
+    picsou.register_quackologist(alan)
+    ouazoo = GooseAsDuck(Goose())
+    ouazoo.register_quackologist(alan)
     sim.enroll_duck(picsou)
-    sim.enroll_duck(GooseAsDuck(Goose()))
+    sim.enroll_duck(ouazoo)
     sim.simulate()
     print(f'Picsou counter: {picsou.counter}')
+    print(alan)

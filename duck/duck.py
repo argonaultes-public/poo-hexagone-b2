@@ -4,10 +4,22 @@ from .quack import QuackBehavior, QuackMuet, QuackTresFort
 
 class Duck(ABC):
 
-    def __init__(self, color, flybehavior : FlyBehavior = FlyNone(), quackbehavior : QuackBehavior = QuackMuet()):
+    def __init__(self, color, flybehavior : FlyBehavior = FlyNone(), quackbehavior : QuackBehavior = QuackMuet(), quacologists = []):
         self.__color = color
         self.__flybehavior = flybehavior
         self.__quackbehavior = quackbehavior
+        self.__quackologists = quacologists
+
+    @property
+    def quacologists(self):
+        return self.__quackologists
+
+    def register_quackologist(self, quackologist):
+        self.__quackologists.append(quackologist)
+
+    def notify_quackologists(self):
+        for quackologist in self.__quackologists:
+            quackologist.update()
 
     @property
     def color(self):
@@ -17,6 +29,7 @@ class Duck(ABC):
         self.__flybehavior.fly()
 
     def quack(self):
+        self.notify_quackologists()
         self.__quackbehavior.quack()
 
     @property
@@ -34,6 +47,7 @@ class Duck(ABC):
 class CountFlyDuck(Duck):
 
     def __init__(self, duck : Duck):
+        super().__init__(duck.color, quacologists=duck.quacologists)
         self.__duck = duck
         self.__fly_counter = 0
 
@@ -48,13 +62,13 @@ class CountFlyDuck(Duck):
     def counter(self):
         return f'{self.__fly_counter} {self.__duck.counter}'
 
-
     def display(self):
         return self.__duck.display()
 
 class CountQuackDuck(Duck):
 
     def __init__(self, duck : Duck):
+        super().__init__(duck.color, quacologists=duck.quacologists)
         self.__duck = duck
         self.__quack_counter = 0
 
